@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+ #footer-nav{
+        height: 100px;
+        width: 100%;
+        padding: 15px;
+        text-align: center;
+        font-size: 14px;
+        box-sizing: border-box;
+        color: #8e9397;
+        background: #333333;
+ }

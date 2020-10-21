@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="review">
+
+	<!-- 전체 목록 -->
+	<select id="list" resultType="Review">
+		SELECT * FROM review
+		ORDER BY rvwno desc
+	</select>
+	
+<!-- 	<select id="item" resultType="Integer">  -->
+<!-- 		SELECT review.*, member.memid FROM review -->
+<!-- 		JOIN member ON review.memid=member.memid -->
+<!-- 		WHERE rvwno=#{rvwno} -->
+<!-- 	</select> -->
+	
+	<!-- 게시글 상세조회 -->
+	<select id="view" parameterType="int" resultType="Review">
+		SELECT * FROM review
+		WHERE rvwno=#{rvwno}
+	</select>
+	
+	<!-- 게시글 작성 -->
+	<insert id="add">
+		INSERT INTO review (rvwno,rvwcontent,memid,rvwimg)
+		VALUES (seq_reviewno.NEXTVAL,#{rvwcontent},#{memid},#{rvwimg})
+	</insert>
+
+	<!-- 게시글 수정 -->
+	<update id="update" parameterType="Review">
+		UPDATE review
+		SET rvwcontent=#{rvwcontent} , rvwimg =#{rvwimg}
+		WHERE rvwno=#{rvwno}
+	</update>
+<!-- 	<update id="update" parameterType="Review"> -->
+<!-- 		UPDATE review -->
+<!-- 		SET rvwtitle = #{rvwtitle},rvwcontent = #{rvwcontent},rvwimg = #{rvwimg} -->
+<!-- 		WHERE rvwno=#{rvwno} -->
+<!-- 	</update> -->
+	
+	<!-- 조회수 증가 -->
+	<update id="increaseCnt">
+		UPDATE review
+		SET rvwcnt = rvwcnt + 1
+		WHERE rvwno=#{rvwno}
+	</update>
+	
+	<!-- 게시글 삭제 -->
+	<delete id="delete" parameterType="int">
+		DELETE FROM review
+		WHERE rvwno=#{rvwno}
+	</delete>
+	
+	
+</mapper>
+

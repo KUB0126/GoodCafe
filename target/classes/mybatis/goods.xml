@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="goods">
+	
+	<select id="total" resultType="Integer">
+		SELECT COUNT(*) FROM goods
+	</select>
+	
+	<select id="list" resultType="Goods">
+		SELECT * FROM goods
+		WHERE gdsdivision=#{gdsdivision} 
+	</select>
+	
+	<insert id="add">
+		INSERT INTO goods
+		VALUES (seq_gdsid.NEXTVAL,#{gdsdivision},#{gdsname},#{gdsprice},#{gdsimage})
+	</insert>
+	
+	<update id="update">
+		UPDATE goods
+		SET gdsdivision=#{gdsdivision},gdsname=#{gdsname},gdsprice=#{gdsprice},gdsimage=#{gdsimage}
+		WHERE gdsid=#{gdsid}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM goods
+		WHERE  gdsid=#{gdsid}
+	</delete>
+	
+	<select id="item" resultType="Goods">
+		SELECT * FROM goods
+		WHERE gdsid=#{gdsid}
+	</select>
+
+
+</mapper>

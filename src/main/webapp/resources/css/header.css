@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Noto+Sans+KR:wght@400;700&display=swap');
+
+@charset "UTF-8";
+
+   #header-nav{
+	background: #fff;
+	position:fixed;
+	top:0;
+	left:0;
+	width: 100%;
+	height:135px;
+	z-index: 10;
+	border-bottom:1px solid #ddd ;
+   }
+   #header-nav .login{
+   	width: 1000px;
+    margin: 0 auto;
+    height: 30px;
+    box-sizing: border-box;
+	
+   }
+   #header-nav .login .login_info div{
+   	 text-align:right;
+     float: right;
+     padding:8px;
+   }
+
+   #header-nav .gnb{
+     width: 1100px;
+     margin: 0 auto;
+   }
+   #header-nav .gnb h1{ 
+   	 font-size:48px;
+  	 width: 250px;
+     float: left;
+     color:#333333;
+     line-height: 40px;
+     font-family: 'Bangers', cursive;
+     box-sizing: border-box;
+   }
+   #header-nav .gnb .gnb_nav{
+   	 width: 850px;
+     float: right;
+     text-align: center;
+     height: 50px;
+     margin-top: 40px;
+   }
+   #header-nav .gnb .gnb_nav ul{
+   	width: 800px;
+   	margin:0 auto;
+   }
+   
+   #header-nav .gnb .gnb_nav .main_nav>li{
+   float: left;
+   width: 25%;
+   height: 50px;
+   color:#333333;
+   line-height: 50px;
+   text-align: center;
+   position: relative;
+   font-size: 20px;
+   }
+   #header-nav .gnb .gnb_nav .main_nav>li:hover .sub_nav{
+   display: block;
+   }
+   #header-nav .gnb .gnb_nav .main_nav>li a{
+    color:#333333;
+   	display: block;
+   	height: 50px;
+   }
+   #header-nav .gnb .gnb_nav .main_nav>li a:hover{
+   color: black; 
+   font-weight: bold;
+   }
+   #header-nav .gnb .gnb_nav .main_nav .sub_nav{
+   position: absolute;
+   top: 40px;
+   left: 0;
+   width: 100%;
+   display: none;
+   }
+   #header-nav .gnb .gnb_nav .main_nav .sub_nav li{
+   background: #fff;
+   }
+   #header-nav .gnb .gnb_nav .main_nav .sub_nav li a:hover{
+   background: #fff;
+   }
+

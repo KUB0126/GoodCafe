@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="notice">
+	
+	<select id="list" resultType="Notice">
+		SELECT 	ntcno, ntctitle, ntcdate ,ntccnt
+		FROM notice
+		ORDER BY ntcno DESC
+	</select>
+
+	<select id="read" parameterType="int" resultType="Notice">
+		SELECT ntcno, ntctitle, ntccontent, ntcdate ,ntccnt
+		 FROM notice
+		 WHERE ntcno = #{ntcno}
+	</select>
+	
+	<insert id="add">
+		INSERT INTO notice (ntcno,ntctitle,ntccontent)
+		VALUES (seq_ntcno.NEXTVAL,#{ntctitle},#{ntccontent})
+	</insert>
+	
+	<update id="update" parameterType="Notice">
+		UPDATE notice
+		SET ntctitle = #{ntctitle},ntccontent = #{ntccontent}
+		 WHERE ntcno = #{ntcno} 
+	</update>
+	
+	<!-- 조회수 증가 -->
+	<update id="increaseCnt">
+		UPDATE notice
+		SET ntccnt = ntccnt + 1
+		WHERE ntcno=#{ntcno}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM notice
+		 WHERE ntcno = #{ntcno}
+	</delete>
+	
+</mapper>

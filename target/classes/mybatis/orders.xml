@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="orders">
+	
+	<select id="list" resultType="Orders">
+		SELECT * FROM orders
+		ORDER BY orderid DESC
+	</select>
+	
+	<select id="plist" resultType="Orders">
+		SELECT * FROM orders
+		WHERE memid=#{memid}
+	</select>
+
+	<resultMap type="Orders" id="OrdersMap">
+		<id column="orderid" property="orderid"/>
+		<result column="memid" property="memid"/>
+		<result column="saleprice" property="saleprice"/>
+		<result column="orderdate" property="orderdate"/>
+		<result column="name" property="name"/>
+		
+		<collection property="detail" column="oid" ofType="Detail" javaType="ArrayList">
+			<id column="detailid" property="detailid"/>
+			<result column="gdsid" property="gdsid"/>
+			<result column="gdsprice" property="gdsprice"/>
+			<result column="amount" property="amount"/>
+			<result column="gdsname" property="gdsname"/>
+		</collection>
+	</resultMap>
+	
+	<select id="item" resultMap="OrdersMap">
+		SELECT orders.*, detail.orderid oid, detail.*, member.name, goods.gdsprice,goods.gdsname FROM orders
+		JOIN detail ON orders.orderid=detail.orderid
+		JOIN member ON orders.memid = member.memid
+		JOIN goods ON detail.gdsid = goods.gdsid
+		WHERE orders.orderid=#{orderid}
+	</select>	
+
+<!-- 	<select id="item" resultType="Orders"> -->
+<!-- 		SELECT * FROM orders -->
+<!-- 		WHERE orders.orderid=#{orderid} -->
+<!-- 	</select> -->
+
+	<insert id="add">
+		INSERT INTO orders (orderid,memid,saleprice,orderdate)
+		VALUES (seq_orderid.NEXTVAL,#{memid},#{saleprice}, sysdate)
+		
+		 <selectKey keyProperty="orderid" resultType="Integer" order="AFTER">
+	    	 select seq_orderid.currval FROM DUAL
+	  	</selectKey>
+	</insert>
+	
+	<update id="update">
+		UPDATE orders
+		SET memid=#{memid},saleprice=#{saleprice},orderdate=#{orderdate}
+		WHERE orderid=#{orderid}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM orders
+		WHERE orderid=#{orderid}
+	</delete>
+</mapper>

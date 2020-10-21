@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Noto+Sans+KR:wght@400;700&display=swap');
+@charset "UTF-8";
+
+#contents{
+	text-align:center;
+	width:1000px;
+	margin:0 auto; 
+	margin-top:200px; 
+	margin-bottom:200px;
+	padding:15px; 
+	height:400px;
+	box-sizing: border-box;
+	color:#333333;
+	position:relative;
+}
+#contents h1{
+	padding-bottom:5px;
+	text-align: center;
+}
+.box_login{
+	margin:0 auto;
+	width: 500px;
+	height:250px;
+	border: 2px solid gray;
+	position: absolute;
+	left:40%;
+    top:40%;
+    margin-left:-150px;
+    margin-top:-70px;
+	padding-bottom: 40px;
+}
+.box_login h3{
+	padding: 20px 10px;
+	color:#777;
+	display: inline-block;
+}
+.box_login p{
+	color: green;
+	display: inline-block;
+}
+.form_box{
+	border-top: 1px solid #ddd;
+	padding : 20px; 
+}
+
+
+.form_box input[type=text], input[type=password] {
+  height: 44px;
+  font-size: 16px;
+  width: 450px;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-top: 1px solid #c0c0c0;
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.form_box input[type=submit] {
+  width: 450px;
+  display: block;
+  height:50px;
+  margin-top:10px;
+  margin-left:5px;
+  margin-bottom: 10px;
+  position: relative;
+  color: #ffffff;
+  background: green;
+  font-size: 16px;
+}

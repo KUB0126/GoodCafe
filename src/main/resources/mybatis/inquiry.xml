@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="inquiry">
+
+	<select id="list" resultType="Inquiry">
+		SELECT 	inqno, inqtitle, inqwriter ,inqdate
+		FROM inquiry
+		ORDER BY inqno DESC
+	</select>
+	
+	<select id="view" parameterType="int" resultType="Inquiry">	
+		SELECT * FROM inquiry
+		WHERE inqno = #{inqno}
+	</select>
+
+	<insert id="add">
+		INSERT INTO inquiry (inqno, inqtitle, inqcontent, inqwriter)
+		VALUES (seq_inqno.NEXTVAL,#{inqtitle},#{inqcontent},#{inqwriter})
+	</insert>
+	
+	<update id="update" parameterType="Inquiry">
+		UPDATE inquiry
+		SET inqtitle = #{inqtitle},inqcontent = #{inqcontent}
+		 WHERE inqno = #{inqno} 
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM inquiry
+		WHERE inqno = #{inqno}
+	</delete>
+	
+</mapper>
